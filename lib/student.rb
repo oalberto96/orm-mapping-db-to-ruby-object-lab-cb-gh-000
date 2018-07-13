@@ -21,8 +21,7 @@ class Student
     SELECT COUNT(students.id) FROM students
     WHERE students.grade = 9
     SQL
-    result = DB[:conn].execute(sql)
-    binding.pry
+    DB[:conn].execute(sql)[0][0]
   end
 
   def self.find_by_name(name)
