@@ -29,7 +29,7 @@ class Student
 
   def self.students_below_12th_grade
     sql = <<-SQL
-    
+
     SQL
   end
 
