@@ -22,7 +22,6 @@ class Student
     WHERE students.grade = 9
     SQL
     result = DB[:conn].execute(sql)[0][0]
-    binding.pry
   end
 
   def self.find_by_name(name)
