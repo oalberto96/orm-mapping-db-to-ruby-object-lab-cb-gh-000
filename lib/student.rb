@@ -24,6 +24,7 @@ class Student
     result = DB[:conn].execute(sql)
     students = []
     result.each {|row| students << self.new_from_db(row) }
+    students
   end
 
   def self.find_by_name(name)
