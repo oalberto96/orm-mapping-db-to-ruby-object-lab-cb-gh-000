@@ -11,7 +11,13 @@ class Student
     student
   end
 
-  def self.first_X_students_in_grade_10
+  def self.first_X_students_in_grade_10(x)
+    sql = <<-SQL
+    SELECT * FROM students
+    WHERE students.grade = 10 
+    LIMIT ? 
+    SQL
+    DB[:conn].execute(sql, x)
   end
 
   def self.all
@@ -23,6 +29,12 @@ class Student
     result = DB[:conn].execute(sql)
     students = []
     result.each {|row| students << self.new_from_db(row) }
+    students
+  end
+
+  def self.array_from_raw_data(data)
+    students = []
+    data.each {|row| students << self.new_from_db(row) }
     students
   end
 
