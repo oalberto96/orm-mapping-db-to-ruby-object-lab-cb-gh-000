@@ -21,7 +21,9 @@ class Student
     SELECT * FROM students
     WHERE students.grade = 9
     SQL
-    result = DB[:conn].execute(sql)[0][0]
+    result = DB[:conn].execute(sql)
+    students = []
+    result.each {|row| students << self.new_from_db(row) }
   end
 
   def self.find_by_name(name)
