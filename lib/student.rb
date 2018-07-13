@@ -36,11 +36,12 @@ class Student
   end
 
   def self.all_students_in_grade_X(grade)
-    sql = <<-SQL 
-    SELECT * FROM students 
+    sql = <<-SQL
+    SELECT * FROM students
     WHERE students.grade = ?
     SQL
-    DB[:conn] = 
+    result = DB[:conn].execute(sql, grade)
+    self.array_from_raw_data(result)
   end
 
   def self.array_from_raw_data(data)
