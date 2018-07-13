@@ -30,10 +30,12 @@ class Student
   def self.students_below_12th_grade
     sql = <<-SQL
     SELECT * FROM students
-
+    WHERE students.grade < 12
     SQL
     result = DB[:conn].execute(sql)
-    binding.pry
+    students = []
+    result.each {|row| students << self.new_from_db(row) }
+    students
   end
 
   def self.find_by_name(name)
