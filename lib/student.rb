@@ -35,6 +35,14 @@ class Student
     self.first_X_students_in_grade_10(1).first
   end
 
+  def self.all_students_in_grade_X(grade)
+    sql = <<-SQL 
+    SELECT * FROM students 
+    WHERE students.grade = ?
+    SQL
+    DB[:conn] = 
+  end
+
   def self.array_from_raw_data(data)
     students = []
     data.each {|row| students << self.new_from_db(row) }
