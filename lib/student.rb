@@ -28,9 +28,7 @@ class Student
     SELECT * FROM students
     SQL
     result = DB[:conn].execute(sql)
-    students = []
-    result.each {|row| students << self.new_from_db(row) }
-    students
+    self.array_from_raw_data(result)
   end
 
   def self.array_from_raw_data(data)
@@ -45,9 +43,7 @@ class Student
     WHERE students.grade = 9
     SQL
     result = DB[:conn].execute(sql)
-    students = []
-    result.each {|row| students << self.new_from_db(row) }
-    students
+    self.array_from_raw_data(result)
   end
 
   def self.students_below_12th_grade
@@ -56,9 +52,7 @@ class Student
     WHERE students.grade < 12
     SQL
     result = DB[:conn].execute(sql)
-    students = []
-    result.each {|row| students << self.new_from_db(row) }
-    students
+    self.array_from_raw_data(result)
   end
 
   def self.find_by_name(name)
