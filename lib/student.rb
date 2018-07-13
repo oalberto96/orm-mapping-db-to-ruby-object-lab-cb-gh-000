@@ -31,6 +31,10 @@ class Student
     self.array_from_raw_data(result)
   end
 
+  def self.first_student_in_grade_10
+    self.first_X_students_in_grade_10(1)
+  end
+
   def self.array_from_raw_data(data)
     students = []
     data.each {|row| students << self.new_from_db(row) }
